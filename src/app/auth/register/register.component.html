@@ -1,0 +1,85 @@
+<app-header></app-header>
+  <div class="form_wrapper">
+    <div class="form_container">
+      <div class="title_container">
+        <h2>Responsive Registration Form</h2>
+      </div>
+      <div class="row clearfix">
+        <div class="">
+          <form [formGroup]="registerForm">
+            <div class="input_field"> <span><i aria-hidden="true" class="fa fa-envelope"></i></span>
+              <input type="email" name="email" formControlName="email" placeholder="Email"  />
+              <mat-error *ngIf="registerForm.controls['email'].hasError('email') && !registerForm.controls['email'].hasError('required')">
+                Please enter a valid email address
+              </mat-error>
+              <mat-error *ngIf="registerForm.controls['email'].hasError('required')">
+                Email is <strong>required</strong>
+              </mat-error>
+            </div>
+            <div class="input_field"> <span><i aria-hidden="true" class="fa fa-lock"></i></span>
+              <input type="password" name="password" placeholder="Password" formControlName="password"/>
+              <mat-error *ngIf="registerForm.controls['password'].hasError('minlength') && !registerForm.controls['password'].hasError('required')">
+                Please enter a strong password
+              </mat-error>
+              <mat-error *ngIf="registerForm.controls['password'].hasError('required')">
+                Password is <strong>required</strong>
+              </mat-error>
+            </div>
+            <div class="input_field"> <span><i aria-hidden="true" class="fa fa-lock"></i></span>
+              <input type="password" name="password" placeholder="Re-type Password" formControlName="confirmPassword" (change)="onChange()" />
+              <mat-error *ngIf="registerForm.controls['confirmPassword'].hasError('minlength') && !registerForm.controls['confirmPassword'].hasError('required')">
+                Please enter a strong password
+              </mat-error>
+              <mat-error *ngIf="registerForm.controls['confirmPassword'].hasError('mismatch')">
+                Password is <strong>not match</strong>
+              </mat-error>
+            </div>
+            <div class="row clearfix">
+              <div class="col_half">
+                <div class="input_field"> <span><i aria-hidden="true" class="fa fa-user"></i></span>
+                  <input type="text" name="name" placeholder="First Name" formControlName="firstname" />
+                  <mat-error *ngIf="registerForm.controls['firstname'].hasError('required')">
+                    First name is <strong>required</strong>
+                  </mat-error>
+                </div>
+              </div>
+              <div class="col_half">
+                <div class="input_field"> <span><i aria-hidden="true" class="fa fa-user"></i></span>
+                  <input type="text" name="name" placeholder="Last Name" formControlName="lastname"/>
+                  <mat-error *ngIf="registerForm.controls['lastname'].hasError('required')">
+                    Last name is <strong>required</strong>
+                  </mat-error>
+                </div>
+              </div>
+            </div>
+                  <div class="input_field radio_option">
+                <input type="radio" name="radiogroup1" id="rd1" value="male" formControlName="gender">
+                <label for="rd1">Male</label>
+                <input type="radio" name="radiogroup1" id="rd2" value="female" formControlName="gender">
+                <label for="rd2">Female</label>
+                </div>
+                <div class="input_field select_option">
+                  <select formControlName="option" >
+                    <option>Select a country</option>
+                    <option>Option 1</option>
+                    <option>Option 2</option>
+                  </select>
+                  <div class="select_arrow"></div>
+                </div>
+              <div class="input_field checkbox_option">
+                  <input type="checkbox" id="cb1">
+                  <label for="cb1">I agree with terms and conditions</label>
+              </div>
+              <div class="input_field checkbox_option">
+                  <input type="checkbox" id="cb2">
+                  <label for="cb2">I want to receive the newsletter</label>
+              </div>
+            <!-- <input class="button" type="submit" value="Register" /> -->
+            <button [disabled]="!registerForm.valid"  class="btn btn-primary">Register</button>
+            <p style="cursor: pointer; text-align: center;">already have an account</p>
+          </form>
+        </div>
+      </div>
+    </div>
+  </div>
+  <app-footer>

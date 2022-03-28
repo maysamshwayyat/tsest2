@@ -1,0 +1,55 @@
+<app-header></app-header>
+<section>
+    <div class="container mt-5">
+        <div class="d-flex justify-content-center h-100">
+            <div id="formContent">
+                <!-- Icon -->
+                <div class="first">
+                    <h1 class="my-5">SIGN IN</h1>
+                </div>
+                <!-- Login Form -->
+                <form>
+                    <div class="input_field">
+                        <input type="email"  class="second zero-raduis" name="email" [formControl]="email" 
+                            ngModel="" >
+                        <mat-error
+                            *ngIf="email.hasError('email') && !email.hasError('required')">
+                            Please enter a valid email address
+                        </mat-error>
+                        <mat-error *ngIf="email.hasError('required')">
+                            Email is <strong>required</strong>
+                        </mat-error>
+                    </div>
+                    <div class="input_field">
+                        <input type="text" id="password" class="third zero-raduis" name="login"
+                        [formControl]="password"  placeholder="password">
+                        <mat-error
+                            *ngIf="password.hasError('minlength') && !password.hasError('required')">
+                            Please enter a strong password
+                        </mat-error>
+                        <mat-error *ngIf="password.hasError('required')">
+                            Password is <strong>required</strong>
+                        </mat-error>
+                    </div>
+                    <p>{{emailCheck}}</p>
+
+                    <div class="input_field">
+                        <input type="checkbox" id="check" formControlName="remmember" class="second zero-raduis">Remember me
+                        <!-- <mat-error *ngIf="loginForm.controls['email'].hasError('email') && !loginForm.controls['email'].hasError('required')">
+                            Please enter a valid email address
+                          </mat-error>
+                          <mat-error *ngIf="loginForm.controls['email'].hasError('required')">
+                            Email is <strong>required</strong>
+                          </mat-error> -->
+                    </div>
+                    
+                    <input type="submit" class="fourth zero-raduis" (click)="submit()"  value="login">
+                </form>
+                <input type="email" class="second zero-raduis" name="email" [value]="emailCheck" >
+
+
+            </div>
+        </div>
+    </div>
+</section>
+<app-footer></app-footer>
